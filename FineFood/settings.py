@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'App'
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,8 +59,12 @@ WSGI_APPLICATION = 'FineFood.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'finefood',
+        'USER': 'root',
+        'PASSWORD': 'yflllb',
+        'HOST':'127.0.0.1',
+        'PORT':'3307',
     }
 }
 
@@ -80,3 +86,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR,'/static/')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR,'/static/')
+)
+
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'template'),)
+
+MAX_UPLOAD_SIZE = "524288"
