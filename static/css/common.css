@@ -1,0 +1,28 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#main{position: relative;
+	}
+
+.box{padding: 15px 0 0 15px;
+		float: left;
+	}
+
+.pirc{
+	padding:10px;
+	border:1px solid #ccc;
+	border-radius:5px;          /*CSS3属性，设置边框圆角*/
+	box-shadow:0 0 5px #ccc;
+}
+
+.pirc img{
+	width:165px;
+	height:auto;
+}
+
+.pirc #wz{
+	width: 165px;
+	height: auto;
+}

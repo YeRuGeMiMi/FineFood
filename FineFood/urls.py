@@ -12,6 +12,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'',include('App.urls')),
+    url(r'^site_medias/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}),
+    url(r'^uploads/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.UPLOAD_PATH})
 )
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

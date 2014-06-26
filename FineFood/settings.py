@@ -87,12 +87,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR,'/static/')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'/static/')
+    os.path.join(BASE_DIR,'static'),
 )
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'template'),)
 
 MAX_UPLOAD_SIZE = "524288"
+
+UPLOAD_PATH = os.path.join(BASE_DIR,'uploads')

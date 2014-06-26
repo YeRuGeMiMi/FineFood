@@ -6,9 +6,29 @@
 <title>首页</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
-<link href="" rel="stylesheet">
+<link href="site_medias/css/common.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="site_medias/js/misc.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+	waterfall('main','box');
+}	
+</script>
 </head>
 <body>
-    首页
+
+   	<div id="main">
+   		{% for good in goods %}
+   		<div class="box">
+			<div class="pirc">
+				<img src="{{ good.imguri }}" />
+				<div id="wz">
+					<p>{{ good.goodstitle }}</p>
+					<p>简介:{{ good.intro }}</p>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+   	</div>
 </body>
+
 </html>
