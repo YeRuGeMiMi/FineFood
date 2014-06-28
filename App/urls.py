@@ -6,4 +6,5 @@ urlpatterns = patterns('App.views',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$','index',name='index'),
+    url(r'^loading$','loading',name='loading'),
 )

@@ -3,26 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>首页</title>
+<title>首页--欢迎来到美食街!</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
+<link rel="shortcut icon" href="site_medias/img/tou.png" type="image/x-icon" />
 <link href="site_medias/css/common.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="site_medias/js/misc.js"></script>
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
+	var op = 1;
+	//载入布局
 	window.onload=function(){
-	waterfall('main','box');
-}	
+		waterfall('main','box');
+	}
+
+	//滚动条加载数据
+	window.onscroll = function(){
+		var bool = checkScrollSlide();
+		if (bool) {
+			 $.ajax({
+             type: "GET",
+             url: "../loading",
+             data: {cs:op},
+             dataType: "json",
+             success: function(data){
+			 			for(var i =0 ; i<data.length; i++){
+			 				var html = '<div class="box"><div class="pirc"><img src="uploads/'+data[i].imguri+'" /><div id="wz"><p><a href="#">'+data[i].goodstitle+'</a></p><p>简介:'+data[i].intro+'</p></div></div></div>';
+			 				$('#main').append(html);
+			 			}
+			 			
+			 			waterfall('main','box');
+			 			op++;
+                      }
+         });
+		};
+
+	}
+
 </script>
 </head>
 <body>
-
    	<div id="main">
+   		<div id="top">
+		
+		</div>
    		{% for good in goods %}
    		<div class="box">
 			<div class="pirc">
 				<img src="{{ good.imguri }}" />
 				<div id="wz">
-					<p>{{ good.goodstitle }}</p>
+					<p><a href="#">{{ good.goodstitle }}</a></p>
 					<p>简介:{{ good.intro }}</p>
 				</div>
 			</div>
