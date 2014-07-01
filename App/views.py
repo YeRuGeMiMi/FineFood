@@ -26,7 +26,7 @@ def index(request):
 def loading(request):
 	cs = int(request.GET.get('cs'))
 	endex = 20+cs*10
-	json_r = Goods.objects.order_by('-created')[20:endex]
+	json_r = Goods.objects.order_by('-created')[endex-10:endex]
 	json_r = Goods2JSON(json_r)
 	#json_r = Goods2String(json_r)
 	return HttpResponse(json_r,mimetype="application/javascript") 

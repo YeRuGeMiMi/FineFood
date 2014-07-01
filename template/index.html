@@ -11,7 +11,11 @@
 <script type="text/javascript" src="site_medias/js/misc.js"></script>
 <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
+	//请求次数
 	var op = 1;
+	//是否发送ajax请求开关
+	var onOff = true;
+
 	//载入布局
 	window.onload=function(){
 		waterfall('main','box');
@@ -20,7 +24,8 @@
 	//滚动条加载数据
 	window.onscroll = function(){
 		var bool = checkScrollSlide();
-		if (bool) {
+		if (bool && onOff) {
+			onOff = false;
 			 $.ajax({
              type: "GET",
              url: "../loading",
@@ -33,19 +38,19 @@
 			 			}
 			 			
 			 			waterfall('main','box');
-			 			op++;
+			 			++op;
+			 			onOff = true;
                       }
          });
 		};
-
 	}
 
-</script>
+</script>	
 </head>
 <body>
    	<div id="main">
    		<div id="top">
-		
+			
 		</div>
    		{% for good in goods %}
    		<div class="box">
